@@ -1,0 +1,405 @@
+/*
+
+	 ______   __   __    ______
+	/\__  _\ /\ \ /\ \  /\     \
+	\/_/\ \  \ \ \\_\ \ \ \  ___\
+	   \ \ \  \ \  __  \ \ \ \__/_    
+	    \ \ \  \ \ \/ \ \ \ \     \   
+	     \ \_\  \ \_\\ \ \ \ \_ ___\  
+	      \/_/   \/_/ \/_/  \/_____/   
+
+*/
+
+/* Bare Essentials --------------------------------------- */
+
+html, body {
+	overflow: hidden;
+	height: 100%;
+}
+
+code, pre {
+	overflow-y: scroll;
+	font: 15px/23px monospace;
+}
+
+pre {
+background-color: #F8F8F8;
+border: 1px solid #CCC;
+font-size: 13px;
+line-height: 19px;
+overflow: auto;
+padding: 6px 10px;
+border-radius: 3px;
+margin: 0 0 25px 0;
+}
+
+input[type="submit"], textarea, input[type="text"] {
+	border: none;
+}
+
+body {
+	font: 300 15px/22px Helvetica, Arial;
+	background: #99a3b0 url(images/bg.png) repeat-x top;
+	background-attachment: fixed;
+}
+
+p {
+	margin-bottom: 25px;
+}
+
+h1 {
+	font-size: 30px;
+	margin: 0 0 30px;
+	line-height: 36px;
+	font-weight: 300;
+}
+
+h2 {
+	font-size: 20px;
+	margin: 0 0 10px 0;
+	border-bottom: 1px solid #ECECEC;
+	padding: 0 0 10px;
+	font-weight: 300;
+
+}
+
+a {
+	text-decoration: none;
+	color: #3174c5;
+}
+
+a:hover {
+	color: #2985f2;
+}
+
+ul, ol {
+	margin: 0 0 25px 29px;
+}
+
+ol ol, ul ul, ol ul, ul ol {
+	margin-bottom: 0;
+}
+
+ul br, ol br {
+	display: none;
+}
+
+ul li br {
+	display: block;
+}
+
+ul em, ol em {
+}
+
+/* Content --------------------------------------- */
+
+.single .content {
+	overflow: hidden;
+	width: 850px;
+	margin: 20px auto;
+}
+
+/* Home --------------------------------------- */
+
+.home {
+	padding: 0 30px;
+}
+
+.home .top {	
+	overflow: hidden;
+	border-bottom: 1px solid #eee;
+	margin-bottom: 19px;
+	padding-bottom: 15px;
+}
+
+.home .top a {
+	float: left;
+	font-size: 30px;
+	padding: 5px 0;
+	display: block
+}
+
+.search_form {
+	float: right;
+}
+
+.search_form input[type="search"] {
+		box-shadow: inset 0 1px 1px 1px #999;
+		padding: 7px;
+		border-radius: 2px;
+		width: 150px;
+		/*-webkit-appearance: textfield;*/
+}
+
+.excerpt {
+	margin: 15px 0 15px 30px;
+}
+
+.actions a {
+	color: #ddd;
+	font-size: 12px;
+}
+
+
+/* Sidebar --------------------------------------- */
+
+#sidebar {
+	width: 200px;
+	float: left;
+	position: fixed;
+	margin: 0 0 0 35px;
+}
+
+#sidebar .link {
+	display: block;
+	border-bottom: 1px solid #ddd;
+	padding: 20px 0px;
+	font-size: 16px;
+	width: 100%;
+	text-align: left;
+}
+
+#sidebar .link {
+	background: url(images/arrow_light.png) no-repeat 0 25px;
+	padding: 20px 0 20px 20px;
+}
+
+#sidebar .link.last {
+	border: none;
+}
+
+#sidebar input[type="submit"] {
+	font-size: 16px;
+	color: #369;
+	padding: 3px 0;
+}
+
+/* Elements --------------------------------------- */
+
+.root {
+	overflow: auto;
+	height: 100%;
+}
+
+.paginate .item {
+	padding: 0 10px 0;
+	float: left;
+}
+
+#wrap {
+	overflow: hidden;
+	margin: 20px auto;
+	width: 986px;
+	background: url(images/bg_white.png) repeat-y;
+}
+
+.inner {
+	background: url(images/bg_r.png) repeat-y 983px 0;
+	overflow: hidden;
+}
+
+#top, .left, .right, .bottom {
+}
+
+#top {
+	height: 4px;
+	background: url(images/bg_top.png) no-repeat top;
+}
+
+.left {
+	float: left;
+	width: 3px;
+	background: url(images/bg_l.png) repeat-y;
+
+}
+
+.bottom {
+	height: 3px;
+	background: url(images/bg_bottom.png) no-repeat;
+	width: 986px;
+}
+
+#content {
+		padding: 40px;
+		width: 900px;
+		clear: both;
+		overflow:hidden;
+}
+
+.post {
+	margin: 20px 0;
+	padding: 0 0 20px 0;
+	border-bottom: 1px solid #eee;
+	overflow: hidden;
+}
+
+.post .left-column {
+	float: left;
+	width: 580px;
+}
+
+.post .date {
+float: right;
+text-align: right;
+color: #ddd;
+font-size: 12px;
+width: 120px;
+}
+
+.post .date:hover {
+	color: #888;
+}
+
+.single .date {
+	color: #3174C5;
+}
+
+.dates {
+	color: #aaa;
+	font: 12px Arial;
+	overflow: hidden;
+}
+
+.dates > div {
+	float: left;
+}
+
+.modify-date {
+	margin-left: 10px;
+}
+
+/* Elements --------------------------------------- */
+
+.post .dates, .post form {
+	visibility: hidden;
+}
+
+.post:hover .dates, .post:hover form {
+	visibility: visible;
+}
+
+/* Post Inputs --------------------------------------- */
+
+
+input, textarea {
+	display: block;
+}
+
+textarea {
+	resize: none;
+	padding: 0;
+}
+
+input[type="submit"]::-moz-focus-inner {border:0;}
+
+input[type="submit"] {
+	cursor: pointer;
+	font: 11px Arial;
+	color: #369;
+}
+
+input[type="submit"]:hover {
+	text-decoration: underline;
+	color: #369;
+
+}
+
+input.remove {
+	color: #aaa;
+
+}
+
+input.edit {
+	margin-right: 5px;
+	float: left;
+}
+
+input.input_title[type="text"] {
+	font: 300 30px Helvetica, Arial;
+	width: 100%;
+	padding: 0;
+	margin: 0 0 30px 0;
+}
+
+	
+/* Add Post --------------------------------------- */
+
+.word_count {
+	margin: 15px 0;
+	color: #999;
+	font: 14px Arial;
+}
+
+
+textarea, .contentEditable {
+	background: #fff;
+	width: 850px;
+	margin: 10px 0 0 0;
+	overflow: auto;
+	font: 300 15px/22px Helvetica, Arial;
+
+}
+
+textarea.hidden {
+	display: none;
+}
+
+
+.checkbox {
+	margin: 20px 0;
+	overflow: hidden;
+}
+
+input[type="checkbox"] {
+	display: inline;
+	margin: 0 10px 0 0;
+}
+
+input[type="text"] {
+	background: #fff;
+	float: left;
+	margin: 0 20px 20px 0;
+	width: 250px;
+	display: block;
+	float: none;
+	font: 300 15px/22px Helvetica, Arial;
+
+}
+
+.add, .edit {
+	width: 850px;
+	margin: 20px auto;
+	padding: 0 0 20px 0;
+	overflow: hidden;
+}
+
+input[type="submit"], .cancel,  .delete a, .blue, .grey {
+	float: left;
+	margin: 10px 15px 0 0;
+	font: 12px Arial;
+	background: #369 url(/images/blue.png) repeat-x center;
+	color: #fff;
+	padding: 10px 15px;
+	border-radius: 5px;
+	display: block;
+}
+
+.blue:hover, .grey:hover {
+	color: #fff;
+}
+
+.cancel, .delete a, .grey {
+	background: #9f9f9f url(/images/grey.png) repeat-x center;
+}
+
+.add input[type="submit"]:hover, .edit input[type="submit"]:hover, .cancel:hover, .edit .delete a:hover {
+	text-decoration: none;
+	color: #fff;
+}
+
+/* Upload file Input magic --------------------------------------- */
+
+input[type="file"] {
+	margin: 15px 0 5px 0;
+	font: 12px Arial;
+}
