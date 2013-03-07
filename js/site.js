@@ -92,31 +92,38 @@ $(document).ready(function() {
 	
 	};
 
-	
-	wordCount();
 	$('textarea').keyup(function()
 	{
 		wordCount();
 	});
 
 	$('textarea').autosize(); 
-
-	// Make the white background as tall as the window. This is just cool
 	var h = $('#wrap').outerHeight();
-	var padding = parseInt(jQuery(".inner").css("padding-top"));
-	padding += parseInt(jQuery(".inner").css("padding-bottom"));
-	padding += parseInt(jQuery(".inner").css("margin-top"));
-	padding += parseInt(jQuery(".inner").css("margin-bottom"));
-	padding += parseInt(jQuery("#wrap").css("padding-top"));
-	padding += parseInt(jQuery("#wrap").css("padding-bottom"));
-	padding += parseInt(jQuery("#wrap").css("margin-top"));
-	padding += parseInt(jQuery("#wrap").css("margin-bottom"));
+	// Make the white background as tall as the window. This is just cool
+	var padding = ($(".inner").outerHeight(true) - $(".inner").height());
+	padding += ($("#wrap").outerHeight(true) - $("#wrap").height());
 
-	if (h < $(window).height())
+	resize(h, padding);
+
+	$(window).resize(function()
 	{
-		$('.inner').css("min-height", $(window).height() - padding + "px");
-	}
-
-	$('#content').css("min-height", $('.inner').innerHeight() - 87);
+		resize(h, padding);
+	});
 });
 
+function resize(h, padding)
+{
+	$('#wrap').css("min-height", $(window).height() - padding + "px");
+
+
+	// Content is the main white area minus padding minus the shadows.
+	// I'm bending over bvackwards to not use any hardcoded numbers. 
+	// Not sure it's really worth it. This is going to be confusing when
+	// I look at it after a night's sleep lol.
+
+	padding2 = $("#content").outerHeight() - $("#content").height();
+	borderTop = $("#wrap #top").height();
+	borderBottom = $("#wrap .bottom").height();
+
+	$('#content').css("min-height", $(window).height() - ($("#wrap").outerHeight() - $("#wrap").height() ) - padding - padding2 - borderTop - borderBottom + "px");
+}
