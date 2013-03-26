@@ -31,7 +31,7 @@ $posts = new Query( $args );
 <div class="home">
 
 <div class="top">
-<p><a href="/">Cancel</a> | <a href="/add">Add Note</a></p>
+<p><a href="/">Cancel&nbsp;</a><a href="/add">&nbsp;Add Note</a></p>
 
 <form class="search_form" action="/search" method="GET">
 <input type="search" name="q" placeholder="Search the database ...">
