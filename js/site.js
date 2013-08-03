@@ -1,5 +1,13 @@
 $(document).ready(function() {
 
+	key.filter = function(event)
+	{
+		var tagName = (event.target || event.srcElement).tagName;
+		//return jQuery('textarea').is(':focus');
+		return true;
+	}
+
+
 	// Let us tab in a textarea
 	$("textarea").tabby();
 
@@ -20,37 +28,46 @@ $(document).ready(function() {
 		}
 	});
 
-	$(document).bind('keydown', 'ctrl+s', function()
-	{ 
-		$('#form').submit();
+
+	if ( $('#form').length == 1 )
+	{
+
+		key('⌘+s, ⌘+enter', function()
+		{
+			jQuery('#form').submit();
+			return false;
+		});
+	}
+	
+	if ( $('.search_form input').length == 1 )
+	{
+		key('⌘+f', function()
+		{
+			$('.search_form input').focus();
+			return false;
+		});
+	}
+		 
+	key('ctrl+n', function()
+	{
+			window.location = "/add";
 	});
 
-	$(document).bind('keydown', 'ctrl+n', function()
-	{ 
-		window.location = "/add";
+	key('ctrl+w', function()
+	{
+			window.location = "/";
 	});
 
-	$(document).bind('keydown', 'ctrl+w', function()
-	{ 
-		window.location = "/";
+	key('ctrl+e', function()
+	{
+			window.location = "/edit?id=" + $('#noteID').val();
 	});
 
-	var postID = $('#noteID').val();
-
-	$(document).bind('keydown', 'ctrl+e', function(){ 
-		window.location = "/edit?id=" + postID; 
+	key('ctrl+v', function()
+	{
+			window.location = "/" + $('#noteID').val();
 	});
 
-	$(document).bind('keydown', 'ctrl+v', function()
-	{ 
-		window.location = "/" + postID; 
-	});
-
-	var searchForm = $('.search_form input');
-
-	$(document).bind('keydown', 'ctrl+f', function(){ 
-		searchForm.focus(); 
-	});
 });
 
 $(document).ready(function() {
