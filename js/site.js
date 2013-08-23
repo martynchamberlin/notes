@@ -39,7 +39,7 @@ $(document).ready(function() {
 	if ( $('#form').length == 1 )
 	{
 
-		key('⌘+s, ⌘+enter', function()
+		key('⌘+s, ⌘+enter, ctrl+s, ctrl+enter', function()
 		{
 			jQuery('#form').submit();
 			return false;
@@ -48,7 +48,7 @@ $(document).ready(function() {
 	
 	if ( $('.search_form input').length == 1 )
 	{
-		key('⌘+f', function()
+		key('⌘+f, ctrl+f', function()
 		{
 			$('.search_form input').focus();
 			return false;
