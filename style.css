@@ -144,40 +144,6 @@ ul em, ol em {
 	font-size: 12px;
 }
 
-
-/* Sidebar --------------------------------------- */
-
-#sidebar {
-	width: 200px;
-	float: left;
-	position: fixed;
-	margin: 0 0 0 35px;
-}
-
-#sidebar .link {
-	display: block;
-	border-bottom: 1px solid #ddd;
-	padding: 20px 0px;
-	font-size: 16px;
-	width: 100%;
-	text-align: left;
-}
-
-#sidebar .link {
-	background: url(images/arrow_light.png) no-repeat 0 25px;
-	padding: 20px 0 20px 20px;
-}
-
-#sidebar .link.last {
-	border: none;
-}
-
-#sidebar input[type="submit"] {
-	font-size: 16px;
-	color: #369;
-	padding: 3px 0;
-}
-
 /* Elements --------------------------------------- */
 
 .root {
@@ -194,7 +160,7 @@ ul em, ol em {
 	overflow: hidden;
 	margin: 20px auto;
 	width: 986px;
-	background: #fff url(images/bg_white.png) repeat-y;
+	background: #fff;
 	box-shadow: black 0px 3px 12px;
 }
 
@@ -391,10 +357,9 @@ input[type="submit"], .cancel,  .delete a, .blue, .grey {
 	float: left;
 	margin: 10px 15px 0 0;
 	font: 12px Arial;
-	background: #369 url(/images/blue.png) repeat-x center;
+	background: #7AB0F1;
 	color: #fff;
 	padding: 10px 15px;
-	border-radius: 5px;
 	display: block;
 }
 
@@ -403,7 +368,7 @@ input[type="submit"], .cancel,  .delete a, .blue, .grey {
 }
 
 .cancel, .delete a, .grey {
-	background: #9f9f9f url(/images/grey.png) repeat-x center;
+	background: #D3C9C0;
 }
 
 .add input[type="submit"]:hover, .edit input[type="submit"]:hover, .cancel:hover, .edit .delete a:hover {
