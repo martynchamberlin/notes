@@ -56,7 +56,7 @@ class View
 		$output .= '<h1>' . $post['title'] . '</h1>';
 		$output .= '<div class="wrap">' . markdown($post['secrettext']) . '</div>';
 		$output .= '<div class="word_count">Word Count: ' . $post['word_count'] . '</div>';
-		$output .= '<a href="/edit/?id=' . $post['id'] . '" class="blue">Edit</a>';
+		$output .= '<a href="/edit/?id=' . $post['id'] . '" class="blue edit">Edit</a>';
 		$output .= '<a href="/" class="grey">Cancel</a>';
 		$output .= '<a href="/?delete=' . $post['id'] .'" class="grey delete">Delete</a>';
 		$output .= '<input type="hidden" id="noteID" value="' . $post['id'] . '"/></div>';

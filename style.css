@@ -13,8 +13,6 @@
 /* Bare Essentials --------------------------------------- */
 
 html, body {
-	overflow: hidden;
-	height: 100%;
 }
 
 code, pre {
@@ -38,8 +36,16 @@ input[type="submit"], textarea, input[type="text"] {
 
 body {
 	font: 300 15px/22px Helvetica, Arial;
-	background: #99a3b0 url(images/bg.png) repeat-x top;
+	background: #685f57;
 	background-attachment: fixed;
+}
+
+.title, .add-link, h1 {
+	font-family: Georgia;
+}
+
+.paginate {
+	margin: 20px 0 0;
 }
 
 p {
@@ -68,7 +74,7 @@ a {
 }
 
 a:hover {
-	color: #2985f2;
+	color: #2985F2;
 }
 
 ul, ol {
@@ -107,15 +113,14 @@ ul em, ol em {
 .home .top {	
 	overflow: hidden;
 	border-bottom: 1px solid #eee;
-	margin-bottom: 19px;
 	padding-bottom: 15px;
 }
 
 .home .top a {
 	float: left;
 	font-size: 30px;
-	padding: 5px 0;
-	display: block
+	display: block;
+	padding: 0px 20px 20px 20px;
 }
 
 .search_form {
@@ -189,11 +194,12 @@ ul em, ol em {
 	overflow: hidden;
 	margin: 20px auto;
 	width: 986px;
-	background: url(images/bg_white.png) repeat-y;
+	background: #fff url(images/bg_white.png) repeat-y;
+	box-shadow: black 0px 3px 12px;
 }
 
 .inner {
-	background: url(images/bg_r.png) repeat-y 983px 0;
+	/*background: url(images/bg_r.png) repeat-y 983px 0;*/
 	overflow: hidden;
 }
 
@@ -201,20 +207,20 @@ ul em, ol em {
 }
 
 #top {
-	height: 4px;
-	background: url(images/bg_top.png) no-repeat top;
+	/*	height: 4px; */
+	/*background: url(images/bg_top.png) no-repeat top;*/
 }
 
 .left {
 	float: left;
-	width: 3px;
-	background: url(images/bg_l.png) repeat-y;
+	/*width: 3px;*/
+	/*background: url(images/bg_l.png) repeat-y;*/
 
 }
 
 .bottom {
-	height: 3px;
-	background: url(images/bg_bottom.png) no-repeat;
+	/*height: 3px; */
+	/*background: url(images/bg_bottom.png) no-repeat;*/
 	width: 986px;
 }
 
@@ -225,12 +231,20 @@ ul em, ol em {
 		overflow:hidden;
 }
 
+.post.active, .post.previous, .top.blue-border  {
+	border-bottom: 1px solid #CFE7FF;
+}
+
 .post {
-	margin: 20px 0;
-	padding: 0 0 20px 0;
 	border-bottom: 1px solid #eee;
 	overflow: hidden;
+	padding: 20px;
 }
+
+.post.active {
+	background: #f2f9ff;
+}
+
 
 .post .left-column {
 	float: left;
@@ -245,10 +259,11 @@ font-size: 12px;
 width: 120px;
 }
 
-.post .date:hover {
+/*
+.post.active .date, .post.active .actions a {
 	color: #888;
 }
-
+*/
 .single .date {
 	color: #3174C5;
 }
@@ -365,7 +380,7 @@ input[type="text"] {
 
 }
 
-.add, .edit {
+div.add, div.edit {
 	width: 850px;
 	margin: 20px auto;
 	padding: 0 0 20px 0;

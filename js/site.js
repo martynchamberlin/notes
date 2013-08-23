@@ -1,5 +1,12 @@
 $(document).ready(function() {
 
+	document.title = $('h1').html();
+
+	if ( $('.post').length > 1 )
+	{
+		$('.post').first().addClass('active');
+	}
+
 	key.filter = function(event)
 	{
 		var tagName = (event.target || event.srcElement).tagName;
@@ -59,13 +66,52 @@ $(document).ready(function() {
 	});
 
 	key('ctrl+e', function()
-	{
-			window.location = "/edit?id=" + $('#noteID').val();
+	{	
+		if ( $('.active .actions a').length > 0 )
+		{
+			window.location = $('.active .actions a').first().attr('href');
+		}
+		else if ( $('a.edit').length > 0 )
+		{
+			window.location = $('a.edit').attr('href');
+		}
 	});
 
 	key('ctrl+v', function()
 	{
-			window.location = "/" + $('#noteID').val();
+		if ( $('.active a').length > 0 )
+		{
+			window.location = $('.active a').attr('href');
+		}
+	});
+
+	$('.home .top').addClass('blue-border');
+	key('j', function()
+	{
+			var active = $('.active');
+			$('.home .top').removeClass('blue-border');
+			if ( $(active).next().is('.post') > 0 )
+			{
+				$('.post').removeClass('previous');
+				$(active).removeClass('active').next().addClass('active').prev().addClass('previous');
+				$('html,body').animate({scrollTop: document.body.scrollTop +  $('.post').outerHeight() }, { duration: 0, queue: false });
+			}
+	});
+
+	key('k', function()
+	{
+			var active = $('.active');
+			if ( $(active).prev().is('.post') > 0 )
+			{
+				$('.previous').removeClass('previous');
+				$(active).removeClass('active').prev().addClass('active').prev().addClass('previous');
+				$('html,body').animate({scrollTop: document.body.scrollTop -  $('.post').outerHeight() }, { duration: 0, queue: false });
+
+				if ( ! $('.active').prev().is( '.post' ) )
+				{
+					$('.home .top').addClass('blue-border');
+				}
+			}
 	});
 
 });
@@ -134,7 +180,7 @@ function resize(h, padding)
 
 
 	// Content is the main white area minus padding minus the shadows.
-	// I'm bending over bvackwards to not use any hardcoded numbers. 
+	// I'm bending over backwards to not use any hardcoded numbers. 
 	// Not sure it's really worth it. This is going to be confusing when
 	// I look at it after a night's sleep lol.
 

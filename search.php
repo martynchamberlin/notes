@@ -25,20 +25,10 @@ $args = array(
 );
 
 $posts = new Query( $args );
-?>
 
+require 'top-main.php';
 
-<div class="home">
-
-<div class="top">
-<p><a href="/">Cancel&nbsp;</a><a href="/add">&nbsp;Add Note</a></p>
-
-<form class="search_form" action="/search" method="GET">
-<input type="search" name="q" placeholder="Search the database ...">
-</form>
-</div>
-
-<? echo View::formatArchive( $posts ); ?>	
+echo View::formatArchive( $posts ); ?>	
 
 <div class="paginate">
 
