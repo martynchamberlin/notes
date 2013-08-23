@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 	document.title = $('h1').html();
 
-	if ( $('.post').length > 1 )
+	if ( $('.post').length > 0 )
 	{
 		$('.post').first().addClass('active');
 	}
