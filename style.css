@@ -241,7 +241,7 @@ body .post.not_first {
 
 .post .left-column {
 	float: left;
-	width: 580px;
+	width: 670px;
 }
 
 .post .date {
@@ -250,8 +250,7 @@ text-align: right;
 color: #ddd;
 font-size: 12px;
 line-height: 16px;
-width: 120px;
-
+width: auto;
 }
 
 .dates {
@@ -271,6 +270,7 @@ width: 120px;
 .title {
 	padding: 4px 15px;
 	display: inline-block;
+	width: 555px;
 }
 
 /* Elements --------------------------------------- */
