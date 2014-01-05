@@ -2,6 +2,8 @@
 
 require_once 'initialize.php';
 
+require 'top-main.php';
+
 $args = array(
 	'where' => "WHERE id='". $pageURL . "'",
 );

@@ -1,18 +1,44 @@
-/*
-
-	 ______   __   __    ______
-	/\__  _\ /\ \ /\ \  /\     \
-	\/_/\ \  \ \ \\_\ \ \ \  ___\
-	   \ \ \  \ \  __  \ \ \ \__/_    
-	    \ \ \  \ \ \/ \ \ \ \     \   
-	     \ \_\  \ \_\\ \ \ \ \_ ___\  
-	      \/_/   \/_/ \/_/  \/_____/   
-
-*/
-
 /* Bare Essentials --------------------------------------- */
 
+@font-face {
+	font-family: 'entypo';
+	src: url('fonts/entypo.eot');
+	src: url('fonts/entypo.woff') format('woff'),
+	     url('fonts/entypo.ttf') format('truetype'),
+             url('fonts/entypo.svg') format('svg');
+}
+
+::selection {
+	background: #3174C5;
+	;color: white;
+} 
+
+::-moz-selection {
+	background: #3174C5;
+	color: white;
+} 
+
+input::-webkit-input-placeholder { 
+	/* WebKit browsers */ color: #ddd;
+} 
+
+input:-moz-placeholder { 
+	/* Mozilla Firefox 4 to 18 */ color: #ddd;
+} 
+
+input::-moz-placeholder { 
+	/* Mozilla Firefox 19+ */ color: #ddd;
+} 
+
+input:-ms-input-placeholder { 
+	/* Internet Explorer 10+ */ color: #ddd;
+}
+
 html, body {
+}
+
+.wrap {
+overflow: hidden;
 }
 
 code, pre {
@@ -20,14 +46,13 @@ code, pre {
 }
 
 pre {
-background-color: #F8F8F8;
 border: 1px solid #CCC;
 font-size: 13px;
 line-height: 19px;
 overflow: auto;
 padding: 6px 10px;
-border-radius: 3px;
 margin: 0 0 25px 0;
+border-left: 4px solid #CCC;
 }
 
 input[type="submit"], textarea, input[type="text"] {
@@ -35,13 +60,7 @@ input[type="submit"], textarea, input[type="text"] {
 }
 
 body {
-	font: 300 15px/22px Helvetica, Arial;
-	background: #685f57;
-	background-attachment: fixed;
-}
-
-.title, .add-link, h1 {
-	font-family: Georgia;
+	font: 300 17px/22px 'proxima-nova-soft', Helvetica, Arial;
 }
 
 .paginate {
@@ -62,7 +81,6 @@ h1 {
 h2 {
 	font-size: 20px;
 	margin: 0 0 10px 0;
-	border-bottom: 1px solid #ECECEC;
 	padding: 0 0 10px;
 	font-weight: 300;
 
@@ -99,36 +117,39 @@ ul em, ol em {
 /* Content --------------------------------------- */
 
 .single .content {
-	overflow: hidden;
-	width: 850px;
-	margin: 20px auto;
 }
 
 /* Home --------------------------------------- */
 
-.home {
-	padding: 0 30px;
-}
-
-.home .top {	
+.top {	
 	overflow: hidden;
-	border-bottom: 1px solid #eee;
-	padding-bottom: 15px;
+	padding: 30px 0;
 }
 
 .home .top a {
 	float: left;
-	font-size: 30px;
+	font-size: 20px;
 	display: block;
-	padding: 0px 20px 20px 20px;
+	margin: 0 20px 0 0;
+}
+
+.entypo {
+	font-family: 'entypo';
+	font-size: 30px;
 }
 
 .search_form {
 	float: right;
+	margin-top: -4px;
 }
 
 .search_form input[type="search"] {
-		width: 150px;
+		border: 1px solid #E7E7E7;
+padding: 4px;
+font-size: inherit;
+font-family: inherit;
+width: 220px;
+border-radius: 5px;
 }
 
 .excerpt {
@@ -136,8 +157,34 @@ ul em, ol em {
 }
 
 .actions a {
-	color: #ddd;
-	font-size: 12px;
+color: #DDD;
+font-family: 'entypo';
+font-size: 30px;
+border: 1px solid #DDD;
+width: 30px;
+display: block;
+text-align: center;
+padding: 3px 0;
+float: left;
+border-radius: 5px;
+margin: 0 10px 0 0;}
+
+
+
+/* Active archive --------------------------------------- */
+
+.active .actions a, .post .actions a:hover, .post.active .date  {
+	border-color: #CBE1F8;
+	color: #A0CAF5;
+}
+
+.post.active, .post.previous  {
+	border-bottom: 1px solid #CFE7FF;
+}
+
+.post.active {
+	border: 1px solid #CFE7FF;
+	background: #f2f9ff;
 }
 
 /* Elements --------------------------------------- */
@@ -153,58 +200,42 @@ ul em, ol em {
 }
 
 #wrap {
-	overflow: hidden;
-	margin: 20px auto;
-	width: 986px;
+	margin: 10px auto 40px;
+	width: 840px;
 	background: #fff;
-	box-shadow: black 0px 3px 12px;
 }
 
 .inner {
-	/*background: url(images/bg_r.png) repeat-y 983px 0;*/
 	overflow: hidden;
 }
 
-#top, .left, .right, .bottom {
-}
-
-#top {
-	/*	height: 4px; */
-	/*background: url(images/bg_top.png) no-repeat top;*/
-}
-
-.left {
-	float: left;
-	/*width: 3px;*/
-	/*background: url(images/bg_l.png) repeat-y;*/
-
-}
-
-.bottom {
-	/*height: 3px; */
-	/*background: url(images/bg_bottom.png) no-repeat;*/
-	width: 986px;
-}
-
 #content {
-		padding: 40px;
-		width: 900px;
 		clear: both;
 		overflow:hidden;
 }
 
-.post.active, .post.previous, .top.blue-border  {
-	border-bottom: 1px solid #CFE7FF;
+.post.first {	
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+}
+
+.post.last {
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+body .post.not_first {
+	border-top: none;
 }
 
 .post {
-	border-bottom: 1px solid #eee;
+	border: 1px solid #eee;
 	overflow: hidden;
-	padding: 20px;
+	padding: 25px;
 }
 
-.post.active {
-	background: #f2f9ff;
+.post.not_first {
+	border-top: none;
 }
 
 
@@ -218,16 +249,9 @@ float: right;
 text-align: right;
 color: #ddd;
 font-size: 12px;
+line-height: 16px;
 width: 120px;
-}
 
-/*
-.post.active .date, .post.active .actions a {
-	color: #888;
-}
-*/
-.single .date {
-	color: #3174C5;
 }
 
 .dates {
@@ -242,6 +266,11 @@ width: 120px;
 
 .modify-date {
 	margin-left: 10px;
+}
+
+.title {
+	padding: 4px 15px;
+	display: inline-block;
 }
 
 /* Elements --------------------------------------- */
@@ -270,13 +299,10 @@ input[type="submit"]::-moz-focus-inner {border:0;}
 
 input[type="submit"] {
 	cursor: pointer;
-	font: 11px Arial;
-	color: #369;
 }
 
 input[type="submit"]:hover {
-	text-decoration: underline;
-	color: #369;
+	color: #2985F2;
 
 }
 
@@ -291,44 +317,37 @@ input.edit {
 }
 
 input.input_title[type="text"] {
-	font: 300 30px Helvetica, Arial;
+	font-family: inherit;
+	font-size: 30px;
 	width: 100%;
 	padding: 0;
-	margin: 0 0 30px 0;
+	margin: 0 0 29px 0;
+	border-bottom: 1px solid transparent;
 }
 
-	
+input.input_title[type="text"]:focus {
+	border-bottom: 1px dotted #DDD;
+}
+
 /* Add Post --------------------------------------- */
 
 .word_count {
 	margin: 15px 0;
 	color: #999;
-	font: 14px Arial;
 }
 
 
 textarea, .contentEditable {
 	background: #fff;
-	width: 850px;
-	margin: 10px 0 0 0;
+	width: 798px;
+	margin: 0px 0 0 0;
 	overflow: auto;
-	font: 300 15px/22px Helvetica, Arial;
-
-}
-
-textarea.hidden {
-	display: none;
-}
-
-
-.checkbox {
-	margin: 20px 0;
-	overflow: hidden;
-}
-
-input[type="checkbox"] {
-	display: inline;
-	margin: 0 10px 0 0;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	border: 1px solid #DDD;
+	padding: 20px;
+	border-radius: 5px;
 }
 
 input[type="text"] {
@@ -338,43 +357,22 @@ input[type="text"] {
 	width: 250px;
 	display: block;
 	float: none;
-	font: 300 15px/22px Helvetica, Arial;
+	font-family: inherit;
+	font-size: inherit;
+
 
 }
 
-div.add, div.edit {
-	width: 850px;
-	margin: 20px auto;
-	padding: 0 0 20px 0;
-	overflow: hidden;
-}
-
-input[type="submit"], .cancel,  .delete a, .blue, .grey {
+input[type="submit"], .cancel, .delete-btn, .blue, .grey {
 	float: left;
 	margin: 10px 15px 0 0;
-	font: 12px Arial;
-	background: #7AB0F1;
-	color: #fff;
+	color: #7AB0F1;
+	border: 1px solid #ddd;
 	padding: 10px 15px;
 	display: block;
+	background: none;
+	border-radius: 5px;
+	font-size: inherit;
+	line-height: inherit;
 }
 
-.blue:hover, .grey:hover {
-	color: #fff;
-}
-
-.cancel, .delete a, .grey {
-	background: #D3C9C0;
-}
-
-.add input[type="submit"]:hover, .edit input[type="submit"]:hover, .cancel:hover, .edit .delete a:hover {
-	text-decoration: none;
-	color: #fff;
-}
-
-/* Upload file Input magic --------------------------------------- */
-
-input[type="file"] {
-	margin: 15px 0 5px 0;
-	font: 12px Arial;
-}

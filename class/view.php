@@ -24,27 +24,59 @@ class View
 	{
 		$output = "";
 		$i = 0;
+		if ( count( $posts->data ) == 0 )
+		{
+			echo 'Sorry, no results found.';
+		}
+
 		foreach ($posts->data as $post)
 		{
 			if ($i == 0)
 			{
-				$output .= '<input type="hidden" id="noteID" value="' . $post['id'] .'"/>';
+				$class = 'first';
+			}
+			else {
+				$class = "not_first";
 			}
 			$i++;
+			if ( count( $posts->data ) == $i )
+			{
+				$class .= " last";
+			}
 			
-			$output .= '<div class="post">';
+			$output .= '<div class="post archive ' . $class . '">';
 			$output .= '<div class="left-column">';
-			$output .= '<a class="title" href="/' . $post['id'] . '">' . $post['title'] . '</a>';
 			$output .= '<div class="actions">';
-			$output .= '<a href="/edit?id=' . $post['id'] . '" method="post">Edit</a>';
-			$output .= ' <a class="delete" href="?delete=' . $post['id'] . '"/>Remove</a>';
+			$output .= '<a class="edit" href="/edit?id=' . $post['id'] . '" method="post">&#9998;</a>';
+			$output .= ' <a class="delete trash-can" href="?delete=' . $post['id'] . '"/>&#59177;</a>';
 			$output .= '</div>';
+			$output .= '<a class="title" href="' . View::url( $post['id'], $post['title'] ) . '">' . $post['title'] . '</a>';
+
 			$output .= '</div><!-- end .left -->';
 			$output .= '<div class="date">' . date('F j, Y\<\b\r\/\>g:i A', $post['updatedate']);
 			$output .= '</div></div>';
 
 		}
 			
+		return $output;
+	}
+	
+	static function url( $id, $title  )
+	{
+		$output = $id . '-';
+		
+		$title = explode(' ', $title);
+		foreach ($title as $word)
+		{
+			// strip anything that's not a letter or number
+			$word = preg_replace("/[^a-zA-Z0-9\s]/", "", $word);
+			if (strlen($word) > 0)
+			{
+				$output .= strtolower($word) . '-';
+			}
+		}
+		$output = substr($output, 0, -1);
+		$output .= '/';
 		return $output;
 	}
 

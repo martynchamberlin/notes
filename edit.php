@@ -2,6 +2,8 @@
 
 require'initialize.php';
 
+require 'top-main.php';
+
 ?><div class="edit"><?php
 
 	$db = Core::getInstance();
@@ -21,10 +23,10 @@ require'initialize.php';
 		<input type="hidden" value="<?php echo $id; ?>" name="id" />
 		<input type="hidden" value="Save" name="save"/>
 		<input type="hidden" name="word_count" id="word_count_input" value="<?= $secret['word_count'] ?>">
-		<input type="submit" value="Save" class="add-submit"/>
+		<input type="submit" value="Save" class="blue add-submit"/>
 		</form>
-<a href="/<?=$secret['id'] ?>" class="cancel">Cancel</a>
-		<div class="link delete"><a href="?delete=<?php echo $secret['id'];?>">Delete</a>
+<a href="/<?=$secret['id'] ?>" class="grey cancel">Cancel</a>
+		<a class="delete delete-btn" href="?delete=<?php echo $secret['id'];?>">Delete</a>
 
 	<?php endforeach; ?>
 </div></div></div>

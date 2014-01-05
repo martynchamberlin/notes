@@ -7,7 +7,7 @@ $pageURL = $_SERVER["REQUEST_URI"];
 $pageURL = explode('?', $pageURL);
 $pageURL = array_shift($pageURL);
 $pageURL = basename($pageURL); 
-
+$pageURL = intval( $pageURL);
 $unix = time();
 
 // Process the ADD A SECRET form
@@ -34,7 +34,7 @@ if (isset($_POST['add'])) {
 	$s->bindValue('word_count', $_POST['word_count']);
 	$s->bindValue('title', $title);
 	$s->execute();
-	header('Location: '. $db->lastInsertId());
+	header('Location: '. View::url( $db->lastInsertId(), $_POST['title'] ) );
 	exit();
 }
 
@@ -61,7 +61,7 @@ else if (isset($_POST['save'])) {
 	$s->bindValue('word_count', $_POST['word_count']);
 	$s->bindValue('id', $id);
 	$s->execute();	
-	header("Location:" . $id);
+	header("Location:" . View::url( $id, $title ) );
 	exit();
 }
 

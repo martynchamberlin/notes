@@ -30,7 +30,38 @@ $(document).ready(function() {
 	// Make sure you really want to delete that
 	$(".delete").click(function() {
 		var yes = window.confirm("Seriously?");
-		if (! yes) {
+		if (! yes) {			
+			return false;
+		}
+		else if ( $(this).is('.trash-can') )
+		{
+			var content = $('textarea').val();
+			var url = $(this).attr('href');
+			var post = $(this).closest('.post');
+			var is_active = false;
+			if ( $(post).is('.active') )
+			{
+				is_active = true;
+			}
+			$.ajax({
+ 				type: "GET",
+				url: url,
+				data: { },
+
+				success: function(html){
+					$(post).fadeOut( 500 );
+					setTimeout(function()
+					{
+						$(post).remove();
+						$('.post').first().removeClass('not_first').addClass('first');
+						$('.post').last().addClass('last');
+						if ( is_active ) 
+						{
+							$('.post').first().addClass('active');
+						}
+					}, 510 );
+				}
+			});
 			return false;
 		}
 	});
@@ -50,7 +81,7 @@ $(document).ready(function() {
 	{
 		key('⌘+f, ctrl+f', function()
 		{
-			$('.search_form input').focus();
+			$('.search_form input').focus().select();
 			return false;
 		});
 	}
@@ -77,17 +108,19 @@ $(document).ready(function() {
 		}
 	});
 
-	key('ctrl+v', function()
+	key('ctrl+v, o', function()
 	{
-		if ( $('.active a').length > 0 )
+		if ( $('.active a').length > 0 && ! $('input').is(':focus') )
 		{
-			window.location = $('.active a').attr('href');
+			window.location = $('.active a.title').attr('href');
 		}
 	});
 
 	$('.home .top').addClass('blue-border');
 	key('j', function()
 	{
+		if ( ! $('input').is(':focus') )
+		{
 			var active = $('.active');
 			$('.home .top').removeClass('blue-border');
 			if ( $(active).next().is('.post') > 0 )
@@ -96,10 +129,13 @@ $(document).ready(function() {
 				$(active).removeClass('active').next().addClass('active').prev().addClass('previous');
 				$('html,body').animate({scrollTop: document.body.scrollTop +  $('.post').outerHeight() }, { duration: 0, queue: false });
 			}
+		}
 	});
 
 	key('k', function()
 	{
+		if ( ! $('input').is(':focus') )
+		{
 			var active = $('.active');
 			if ( $(active).prev().is('.post') > 0 )
 			{
@@ -112,6 +148,7 @@ $(document).ready(function() {
 					$('.home .top').addClass('blue-border');
 				}
 			}
+		}
 	});
 
 });
