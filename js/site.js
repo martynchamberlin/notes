@@ -1,5 +1,15 @@
 $(document).ready(function() {
 
+	$('.home div').fadeIn(400);
+	$('form').submit(function()
+	{
+		$('.home > div + div').fadeOut(400);
+	});
+	$('a.click').click(function()
+	{
+		$('.home > div + div').fadeOut(400);
+	});
+
 	document.title = $('h1').html();
 
 	if ( $('.post').length > 0 )

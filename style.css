@@ -8,6 +8,10 @@
              url('fonts/entypo.svg') format('svg');
 }
 
+.home > div + div {
+	display: none;
+}
+
 ::selection {
 	background: #3174C5;
 	;color: white;
