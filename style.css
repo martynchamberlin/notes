@@ -378,5 +378,7 @@ input[type="submit"], .cancel, .delete-btn, .blue, .grey {
 	border-radius: 5px;
 	font-size: inherit;
 	line-height: inherit;
+	font-weight: 300;
+	font-family: inherit;
 }
 

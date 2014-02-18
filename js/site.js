@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
-	$('.home div').fadeIn(400);
+	$('.home div').fadeIn(200);
+
 	$('form').submit(function()
 	{
 		$('.home > div + div').fadeOut(400);
@@ -83,6 +84,7 @@ $(document).ready(function() {
 		key('⌘+s, ⌘+enter, ctrl+s, ctrl+enter', function()
 		{
 			jQuery('#form').submit();
+
 			return false;
 		});
 	}
