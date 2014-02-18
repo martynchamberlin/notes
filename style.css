@@ -156,6 +156,10 @@ width: 220px;
 border-radius: 5px;
 }
 
+.search_form input[type="search"]:focus {
+	border-color: #D6D6D6;
+}
+
 .excerpt {
 	margin: 15px 0 15px 30px;
 }
@@ -320,16 +324,19 @@ input.edit {
 	float: left;
 }
 
-input.input_title[type="text"] {
+body input.input_title {
 	font-family: inherit;
 	font-size: 30px;
 	width: 100%;
 	padding: 0;
 	margin: 0 0 29px 0;
+	border: none;
 	border-bottom: 1px solid transparent;
+	line-height: 30px;
+	border-radius: 0;
 }
 
-input.input_title[type="text"]:focus {
+.input_title:focus {
 	border-bottom: 1px dotted #DDD;
 }
 
@@ -341,7 +348,7 @@ input.input_title[type="text"]:focus {
 }
 
 
-textarea, .contentEditable {
+textarea {
 	background: #fff;
 	width: 798px;
 	margin: 0px 0 0 0;
@@ -363,8 +370,6 @@ input[type="text"] {
 	float: none;
 	font-family: inherit;
 	font-size: inherit;
-
-
 }
 
 input[type="submit"], .cancel, .delete-btn, .blue, .grey {
