@@ -50,13 +50,13 @@ code, pre {
 }
 
 pre {
-border: 1px solid #CCC;
+
 font-size: 13px;
 line-height: 19px;
 overflow: auto;
-padding: 6px 10px;
+padding: 10px;
 margin: 0 0 25px 0;
-border-left: 4px solid #CCC;
+background: #FFFAE0;
 }
 
 input[type="submit"], textarea, input[type="text"] {
