@@ -8,6 +8,10 @@
              url('fonts/entypo.svg') format('svg');
 }
 
+.single .content .wrap > *:last-child {
+	margin-bottom: 0;
+}
+
 .home > div + div {
 	display: none;
 }
@@ -61,14 +65,16 @@ background: #FFFAE0;
 
 input[type="submit"], textarea, input[type="text"] {
 	border: none;
+	transition: .2s;
 }
 
 body {
-	font: 300 17px/22px 'proxima-nova-soft', Helvetica, Arial;
+	font: 300 17px/22px 'proxima-nova', Helvetica, Arial;
 }
 
 .paginate {
 	margin: 20px 0 0;
+	overflow: hidden;
 }
 
 p {
@@ -77,9 +83,10 @@ p {
 
 h1 {
 	font-size: 30px;
-	margin: 0 0 30px;
+	margin: 0 -100px 29px;
 	line-height: 36px;
 	font-weight: 300;
+	text-align: center;
 }
 
 h2 {
@@ -120,21 +127,26 @@ ul em, ol em {
 
 /* Content --------------------------------------- */
 
-.single .content {
-}
 
 /* Home --------------------------------------- */
 
-.top {	
-	overflow: hidden;
-	padding: 30px 0;
+.top {
+	border-bottom: 1px solid #F5F5F5;
+	margin: 0 0 30px;
 }
 
-.home .top a {
+.top .wrap {	
+	overflow: hidden;
+	padding: 30px 0;
+	width: 960px;
+	margin: 0 auto;
+}
+
+.top a {
 	float: left;
 	font-size: 20px;
 	display: block;
-	margin: 0 20px 0 0;
+	margin: 0 30px 0 0;
 }
 
 .entypo {
@@ -153,7 +165,7 @@ padding: 4px;
 font-size: inherit;
 font-family: inherit;
 width: 220px;
-border-radius: 5px;
+border-radius: 15px;
 }
 
 .search_form input[type="search"]:focus {
@@ -207,19 +219,14 @@ margin: 0 10px 0 0;}
 	float: left;
 }
 
-#wrap {
-	margin: 10px auto 40px;
+body.search #content, body.home #content {
 	width: 840px;
-	background: #fff;
-}
-
-.inner {
-	overflow: hidden;
 }
 
 #content {
 		clear: both;
-		overflow:hidden;
+		width: 700px;
+		margin: 0 auto 50px;
 }
 
 .post.first {	
@@ -238,7 +245,6 @@ body .post.not_first {
 
 .post {
 	border: 1px solid #eee;
-	overflow: hidden;
 	padding: 25px;
 }
 
@@ -276,7 +282,7 @@ width: auto;
 }
 
 .title {
-	padding: 4px 15px;
+	padding: 5px 15px;
 	display: inline-block;
 	width: 555px;
 }
@@ -324,34 +330,31 @@ input.edit {
 	float: left;
 }
 
-body input.input_title {
+body .input_title {
 	font-family: inherit;
 	font-size: 30px;
-	width: 100%;
+	margin: 0 -100px 29px;
 	padding: 0;
-	margin: 0 0 29px 0;
 	border: none;
-	border-bottom: 1px solid transparent;
-	line-height: 30px;
+	line-height: 36px;
 	border-radius: 0;
+	text-align: center;
 }
 
-.input_title:focus {
-	border-bottom: 1px dotted #DDD;
-}
 
 /* Add Post --------------------------------------- */
 
 .word_count {
-	margin: 15px 0;
+	margin: 18px 0;
 	color: #999;
+	float: right;
 }
 
 
 textarea {
 	background: #fff;
-	width: 798px;
-	margin: 0px 0 0 0;
+	width: 100%;
+	margin: 0 -20px;
 	overflow: auto;
 	font-family: inherit;
 	font-size: inherit;
@@ -373,17 +376,63 @@ input[type="text"] {
 }
 
 input[type="submit"], .cancel, .delete-btn, .blue, .grey {
-	float: left;
-	margin: 10px 15px 0 0;
-	color: #7AB0F1;
-	border: 1px solid #ddd;
-	padding: 10px 15px;
-	display: block;
-	background: none;
-	border-radius: 5px;
-	font-size: inherit;
-	line-height: inherit;
-	font-weight: 300;
-	font-family: inherit;
+margin: 10px 20px 0 0;
+color: #7AB0F1;
+border: 1px solid #CBE6FF;
+padding: 12px 20px;
+display: inline-block;
+background: none;
+border-radius: 35px;
+line-height: inherit;
+font-family: inherit;
+text-align: center;
+transition: .3s;
+font-size: 15px;
 }
 
+input[type="submit"]:hover, .cancel:hover, .delete-btn:hover, .blue:hover, .grey:hover {
+	border: 1px solid #7AB0F1;
+
+}
+
+.buttons {	
+	text-align: center;
+}
+
+.placeholder {
+	color: #EEE;
+}
+
+.input_title:empty {
+	color: #fff;
+}
+
+.input_title:empty:before {
+	content:"title";
+	color: #ddd;
+}
+
+/***** Categories ****/
+.categories {
+padding: 10px 0;
+color: #999;
+float: left;
+}
+
+.categories label {
+	float: left;
+	padding: 8px 7px 0 0;
+}
+
+.categories input[type="text"] {
+display: block;
+border-radius: 15px;
+padding: 8px 0;
+color: #999;
+margin: 0;
+
+}
+
+.clear {
+	clear: both;
+}

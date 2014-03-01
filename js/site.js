@@ -1,10 +1,22 @@
 $(document).ready(function() {
 
-	$('.home div').fadeIn(200);
+	// Focus on title when you're on a new deal
+	$('.add .input_title, .edit textarea').focus();
+
+
+	function strip(html)
+	{
+	   var tmp = document.createElement("DIV");
+	   tmp.innerHTML = html;
+	   return tmp.textContent||tmp.innerText;
+	}
+
+	$('#content > *').hide().fadeIn(200);
 
 	$('form').submit(function()
 	{
 		$('.home > div + div').fadeOut(400);
+		$('input.input_title').val( strip( $('div.input_title').html() ) );
 	});
 	$('a.click').click(function()
 	{
@@ -28,9 +40,6 @@ $(document).ready(function() {
 
 	// Let us tab in a textarea
 	$("textarea").tabby();
-
-	// Focus on title when you're on a new deal
-	$('.add .input_title, .edit textarea').focus();
 
 	// Get rid of that ugly last border on the sidebar
 	$("#sidebar .link").last().addClass('last');
@@ -211,31 +220,5 @@ $(document).ready(function() {
 
 	$('textarea').autosize(); 
 	var h = $('#wrap').outerHeight();
-	// Make the white background as tall as the window. This is just cool
-	var padding = ($(".inner").outerHeight(true) - $(".inner").height());
-	padding += ($("#wrap").outerHeight(true) - $("#wrap").height());
-
-	resize(h, padding);
-
-	$(window).resize(function()
-	{
-		resize(h, padding);
-	});
 });
 
-function resize(h, padding)
-{
-	$('#wrap').css("min-height", $(window).height() - padding + "px");
-
-
-	// Content is the main white area minus padding minus the shadows.
-	// I'm bending over backwards to not use any hardcoded numbers. 
-	// Not sure it's really worth it. This is going to be confusing when
-	// I look at it after a night's sleep lol.
-
-	padding2 = $("#content").outerHeight() - $("#content").height();
-	borderTop = $("#wrap #top").height();
-	borderBottom = $("#wrap .bottom").height();
-
-	$('#content').css("min-height", $(window).height() - ($("#wrap").outerHeight() - $("#wrap").height() ) - padding - padding2 - borderTop - borderBottom + "px");
-}

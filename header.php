@@ -14,5 +14,5 @@
 <script src="/js/site.js"></script>
 <script src="/js/keymaster.js"></script>
 </head>
-<body>
-<div class="root"><div id="wrap"><div class="inner"><div class="left"><div id="content">
+<body class="<?php echo ( trim( View::showPage(), "/" ) == "") ? "home" : trim( View::showPage(), "/" ); ?>">
+<div class="root"><div id="wrap">

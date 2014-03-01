@@ -11,7 +11,7 @@ class View
 		return $this->$property;
 	}
 
-	static function showPage( $full )
+	static function showPage( $full = true )
 	{
 		$url = $_SERVER["REQUEST_URI"];
 		$url = explode('?', $url);
@@ -54,7 +54,7 @@ class View
 
 			$output .= '</div><!-- end .left -->';
 			$output .= '<div class="date">' . date('F j, Y\<\b\r\/\>g:i A', $post['updatedate']);
-			$output .= '</div></div>';
+			$output .= '</div><div class="clear"></div></div>';
 
 		}
 			
@@ -82,16 +82,17 @@ class View
 
 	static function formatSingle( $post )
 	{	
-		$post = $post->data[0];
 		$output = "";
 		$output .= '<div class="content">';
 		$output .= '<h1>' . $post['title'] . '</h1>';
-		$output .= '<div class="wrap">' . markdown($post['secrettext']) . '</div>';
-		$output .= '<div class="word_count">Word Count: ' . $post['word_count'] . '</div>';
-		$output .= '<a href="/edit/?id=' . $post['id'] . '" class="blue edit">Edit</a>';
+		$output .= '<div class="wrap">' . markdown($post['text']) . '</div>';
+		$output .= '<div class="categories">
+	<label>Category:</label><input type="text" disabled value="' .  $post['cat_name'] . '" placeholder="(none yet!)" name="category">
+	</div><div class="word_count">Word Count: ' . $post['word_count'] . '</div>';
+		$output .= '<div class="clear"></div><div class="buttons"><a href="/edit/?id=' . $post['nid'] . '" class="blue edit">Edit</a>';
 		$output .= '<a href="/" class="grey">Cancel</a>';
-		$output .= '<a href="/?delete=' . $post['id'] .'" class="grey delete">Delete</a>';
-		$output .= '<input type="hidden" id="noteID" value="' . $post['id'] . '"/></div>';
+		$output .= '<a href="/?delete=' . $post['nid'] .'" class="grey delete">Delete</a>';
+		$output .= '<input type="hidden" id="noteID" value="' . $post['nid'] . '"/></div></div>';
 		return $output;
 
 	}

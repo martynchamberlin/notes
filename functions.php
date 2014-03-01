@@ -10,45 +10,75 @@ $pageURL = basename($pageURL);
 $pageURL = intval( $pageURL);
 $unix = time();
 
-// Process the ADD A SECRET form
+// Process the ADD A notes form
 if (isset($_POST['add'])) {
 	$db = Core::getInstance();
 	$db = $db->pdo;
 
-	$content = $_POST['secrettext'];
-	$title = $_POST['title'];
+	$text = trim($_POST['text']);
+	$title = trim($_POST['title']);
+	$category = trim( $_POST['category'] );
 
 	$url = $unix;
 
-	$sql = 'INSERT INTO secret SET
-		secrettext=:secrettext,
+	$sql = 'INSERT INTO notes SET
+		text=:text,
 		publishdate=:publishdate,
 		updatedate=:updatedate,
 		word_count = :word_count,
 		title=:title';
 	
 	$s = $db->prepare($sql);
-	$s->bindValue('secrettext', $content);
+	$s->bindValue('text', $text);
 	$s->bindValue('publishdate', $unix);
 	$s->bindValue('updatedate', $unix);
 	$s->bindValue('word_count', $_POST['word_count']);
 	$s->bindValue('title', $title);
 	$s->execute();
-	header('Location: '. View::url( $db->lastInsertId(), $_POST['title'] ) );
+	$nid = $db->lastInsertId();
+
+	if ( ! empty( $category ) )
+	{
+		$sql = 'SELECT * FROM categories WHERE name = :category';
+		$s = $db->prepare($sql);
+		$s->bindValue('category', $category);
+		$s->execute();
+
+		if ( $s->rowCount() > 0 )
+		{
+			$row = $s->fetch();
+			$cid = $row['id'];
+		}
+		else
+		{
+			$sql = 'INSERT INTO categories SET name = :category';
+			$s = $db->prepare($sql);
+			$s->bindValue('category', $category);
+			$s->execute();
+			$cid = $db->lastInsertId();
+		}
+		$sql = 'INSERT INTO categories_lookup SET nid = :nid, cid = :cid';
+		$s = $db->prepare($sql);
+		$s->bindValue('nid', $nid);
+		$s->bindValue('cid', $cid);
+		$s->execute();
+	}
+
+	header('Location: '. View::url( $nid, $title ) );
 	exit();
 }
 
-// Process the SAVE A SECRET form
+// Process the SAVE A notes form
 else if (isset($_POST['save'])) {
 	$db = Core::getInstance();
 	$pdo = $db->pdo;
 
 	$id = $_POST['id'];
-	$text = $_POST['secrettext'];
-	$title = $_POST['title'];
-	$url = $_POST['url'];
-	
-	$sql = 'UPDATE secret SET secrettext = :text,
+	$text = trim($_POST['text']);
+	$title = trim($_POST['title']);
+	$category = trim( $_POST['category'] );
+
+	$sql = 'UPDATE notes SET text = :text,
 		updatedate = :updatedate,
 		title = :title,
 		word_count = :word_count
@@ -60,18 +90,54 @@ else if (isset($_POST['save'])) {
 	$s->bindValue('title', $title);
 	$s->bindValue('word_count', $_POST['word_count']);
 	$s->bindValue('id', $id);
-	$s->execute();	
+	$s->execute();
+
+
+	if ( ! empty( $category ) )
+	{
+		$sql = 'SELECT * FROM categories WHERE name = :category';
+		$s = $pdo->prepare($sql);
+		$s->bindValue('category', $category);
+		$s->execute();
+
+		if ( $s->rowCount() > 0 )
+		{
+			$row = $s->fetch();
+			$cid = $row['id'];
+		}
+		else
+		{
+			$sql = 'INSERT INTO categories SET name = :category';
+			$s = $pdo->prepare($sql);
+			$s->bindValue('category', $category);
+			$s->execute();
+			$cid = $pdo->lastInsertId();
+		}
+		$sql = 'DELETE FROM categories_lookup WHERE nid = :nid';
+		$s = $pdo->prepare($sql);
+		$s->bindValue('nid', $id);
+		$s->execute();
+
+		$sql = 'INSERT INTO categories_lookup SET nid = :nid, cid = :cid';
+		$s = $pdo->prepare($sql);
+		$s->bindValue('nid', $id);
+		$s->bindValue('cid', $cid);
+		$s->execute();
+	}
+
+
+
 	header("Location:" . View::url( $id, $title ) );
 	exit();
 }
 
-// Process the DELETE A SECRET form
+// Process the DELETE A notes form
 else if (isset($_GET['delete'])) {
 	$db = Core::getInstance();
 	$db = $db->pdo;
 
 	$id = $_GET['delete'];
-	$sql = "DELETE FROM secret WHERE id='$id'";
+	$sql = "DELETE FROM notes WHERE id='$id'";
 
 	$db->exec($sql);
 
