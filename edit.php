@@ -21,6 +21,7 @@ require 'top-main.php';
 		<textarea id="editTextarea" placeholder="thoughts" name="text" class="expand"><?php echo $notes['text']; ?></textarea>
 		<div class="categories">
 	<label>Category:</label><input type="text" value="<?php echo $notes['cat_name']; ?>" placeholder="(optional)" name="category">
+	<?php echo get_category_dropdown(); ?>
 	</div>
 
 		<div class="word_count">Word Count: <span id="word_count"><?= $notes['word_count'] ?></span></div>

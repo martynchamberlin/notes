@@ -65,11 +65,10 @@ background: #FFFAE0;
 
 input[type="submit"], textarea, input[type="text"] {
 	border: none;
-	transition: .2s;
 }
 
 body {
-	font: 300 17px/22px 'proxima-nova', Helvetica, Arial;
+	font: 300 17px/22px 'museo-slab', 'proxima-nova', Helvetica, Arial;
 }
 
 .paginate {
@@ -81,20 +80,27 @@ p {
 	margin-bottom: 25px;
 }
 
-h1 {
-	font-size: 30px;
+h1, 
+body .input_title {
+	font-size: 35px;
 	margin: 0 -100px 29px;
-	line-height: 36px;
+	line-height: 39px;
 	font-weight: 300;
 	text-align: center;
+	font-weight: bold;
+	border: none;
+	padding: 0;
+
 }
 
 h2 {
-	font-size: 20px;
-	margin: 0 0 10px 0;
-	padding: 0 0 10px;
-	font-weight: 300;
+	font-size: 27px;
+	padding: 0 0 7px;
+}
 
+h3 {
+	font-size: 20px;
+	padding: 0 0 7px;
 }
 
 a {
@@ -176,6 +182,11 @@ border-radius: 15px;
 	margin: 15px 0 15px 30px;
 }
 
+.actions {
+	padding: 25px 0 0 25px;
+	float: left;
+}
+
 .actions a {
 color: #DDD;
 font-family: 'entypo';
@@ -193,7 +204,7 @@ margin: 0 10px 0 0;}
 
 /* Active archive --------------------------------------- */
 
-.active .actions a, .post .actions a:hover, .post.active .date  {
+.active .actions a, .post .actions a:hover, .post.active .date, .active a small  {
 	border-color: #CBE1F8;
 	color: #A0CAF5;
 }
@@ -245,7 +256,6 @@ body .post.not_first {
 
 .post {
 	border: 1px solid #eee;
-	padding: 25px;
 }
 
 .post.not_first {
@@ -255,16 +265,24 @@ body .post.not_first {
 
 .post .left-column {
 	float: left;
-	width: 670px;
 }
 
 .post .date {
-float: right;
-text-align: right;
 color: #ddd;
 font-size: 12px;
 line-height: 16px;
 width: auto;
+padding: 25px;
+}
+
+.post .date {
+float: right;
+text-align: right
+}
+
+a small {
+	display: inline-block;
+	color: #ACCBEC;
 }
 
 .dates {
@@ -282,9 +300,18 @@ width: auto;
 }
 
 .title {
-	padding: 5px 15px;
+	padding: 21px 15px;
 	display: inline-block;
 	width: 555px;
+}
+
+.no_category .title {
+padding: 31px 15px 29px;
+}
+
+.has_archive.title {
+margin: -10px 0 -7px;
+padding-bottom: 0;
 }
 
 /* Elements --------------------------------------- */
@@ -328,17 +355,6 @@ input.remove {
 input.edit {
 	margin-right: 5px;
 	float: left;
-}
-
-body .input_title {
-	font-family: inherit;
-	font-size: 30px;
-	margin: 0 -100px 29px;
-	padding: 0;
-	border: none;
-	line-height: 36px;
-	border-radius: 0;
-	text-align: center;
 }
 
 
@@ -397,6 +413,11 @@ input[type="submit"]:hover, .cancel:hover, .delete-btn:hover, .blue:hover, .grey
 
 .buttons {	
 	text-align: center;
+	margin: 15px 0 0;
+}
+
+.single .buttons {
+	margin: 0;
 }
 
 .placeholder {
@@ -435,4 +456,47 @@ margin: 0;
 
 .clear {
 	clear: both;
+}
+
+/* Customize the category Select2 dropdown menu --------------------------------------- */
+
+body .select2-container .select2-choice, 
+body .select2-dropdown-open.select2-drop-above .select2-choice, 
+body .select2-drop.select2-drop-above.select2-drop-active, 
+body .select2-dropdown-open.select2-drop-above .select2-choice {
+background: #FFF;
+border: 1px solid #EEE;
+color: #AAA;
+box-shadow: none;
+}
+
+body .select2-drop-active {
+border: 1px solid #EEE;
+}
+
+body .select2-drop {
+	box-shadow: none;
+}
+
+body .select2-container .select2-choice .select2-arrow {
+background: none;
+border-left: 1px solid #EEE;
+}
+
+body .select2-search input { 
+	border: none;
+	font-family: inherit;
+}
+
+body .select2-results .select2-highlighted {
+	background: #6490D6;
+}
+
+body .select2-results {
+	padding: 0;
+	margin: 0;
+}
+
+body .select2-results .select2-result-label {
+	padding: 4px 12px 5px;
 }

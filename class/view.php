@@ -43,16 +43,23 @@ class View
 			{
 				$class .= " last";
 			}
-			
+			if ( $post['name'] == "" )
+			{	
+				$class .= ' no_category';
+			}
+
 			$output .= '<div class="post archive ' . $class . '">';
 			$output .= '<div class="left-column">';
 			$output .= '<div class="actions">';
-			$output .= '<a class="edit" href="/edit?id=' . $post['id'] . '" method="post">&#9998;</a>';
-			$output .= ' <a class="delete trash-can" href="?delete=' . $post['id'] . '"/>&#59177;</a>';
+			$output .= '<a class="edit" href="/edit?id=' . $post['nid'] . '" method="post">&#9998;</a>';
+			$output .= ' <a class="delete trash-can" href="?delete=' . $post['nid'] . '"/>&#59177;</a>';
 			$output .= '</div>';
-			$output .= '<a class="title" href="' . View::url( $post['id'], $post['title'] ) . '">' . $post['title'] . '</a>';
-
-			$output .= '</div><!-- end .left -->';
+			$output .= '<span class="title"><a href="' . View::url( $post['nid'], $post['title'] ) . '">' . $post['title'] . '</a>';
+			if ( $post['name'] != "" )
+			{
+				$output .= '<br/><a href="/search/?q=in:' . $post['name'] . '"><small>' . $post['name'] . '</small></a>';
+			}
+			$output .= '</span></div><!-- end .left -->';
 			$output .= '<div class="date">' . date('F j, Y\<\b\r\/\>g:i A', $post['updatedate']);
 			$output .= '</div><div class="clear"></div></div>';
 
@@ -87,7 +94,7 @@ class View
 		$output .= '<h1>' . $post['title'] . '</h1>';
 		$output .= '<div class="wrap">' . markdown($post['text']) . '</div>';
 		$output .= '<div class="categories">
-	<label>Category:</label><input type="text" disabled value="' .  $post['cat_name'] . '" placeholder="(none yet!)" name="category">
+	<label>Category:</label><input type="text" disabled value="' .  $post['cat_name'] . '" placeholder="(not specified)" name="category">
 	</div><div class="word_count">Word Count: ' . $post['word_count'] . '</div>';
 		$output .= '<div class="clear"></div><div class="buttons"><a href="/edit/?id=' . $post['nid'] . '" class="blue edit">Edit</a>';
 		$output .= '<a href="/" class="grey">Cancel</a>';

@@ -4,20 +4,22 @@ require'initialize.php';
 
 // This query is strictly for paginating purposes.
 
+// are they searching a specific category?
 if ( strpos( $_GET['q'], 'in:' ) === 0 )
 {
 	$db = Core::getInstance();
 	$pdo = $db->pdo;
-	$sql = 'SELECT count(*) FROM categories C INNER JOIN categories_lookup L ON C.id = L.cid INNER JOIN notes N on L.nid = N.id WHERE C.name = :name';
+	$sql = 'SELECT count(*), N.id as nid FROM categories C INNER JOIN categories_lookup L ON C.id = L.cid INNER JOIN notes N on L.nid = N.id WHERE C.name = :name';
 	$s = $pdo->prepare($sql);
 	$s->bindValue('name',stripslashes(urldecode( substr( $_GET['q'], 3) ) ) );
 	$s->execute();
 	$result = $s->fetchAll();
 }
+// else they are doing a specific search
 else
 {
 $args = array(
-	'columns' => 'count(id)',
+	'columns' => 'count(Notes.id)',
 	'where' => 'WHERE text LIKE "%'. stripslashes(urldecode($_GET['q'])) . '%" || title LIKE "%' . stripslashes(urldecode($_GET['q'])) . '%"',
 );
 
@@ -31,7 +33,7 @@ if ( strpos( $_GET['q'], 'in:' ) === 0 )
 {
 	$db = Core::getInstance();
 	$pdo = $db->pdo;
-	$sql = 'SELECT * FROM categories C INNER JOIN categories_lookup L ON C.id = L.cid INNER JOIN notes N on L.nid = N.id  WHERE C.name = :name
+	$sql = 'SELECT *, N.id as nid FROM categories C INNER JOIN categories_lookup L ON C.id = L.cid INNER JOIN notes N on L.nid = N.id  WHERE C.name = :name
 	ORDER BY updatedate DESC LIMIT ' . View::$startAt . ', ' . View::$perPage;
 	$s = $pdo->prepare($sql);
 	$s->bindValue('name',stripslashes(urldecode( substr( $_GET['q'], 3) ) ) );

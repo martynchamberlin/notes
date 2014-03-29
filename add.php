@@ -14,6 +14,7 @@ require 'top-main.php';
 	<textarea placeholder="thoughts" name="text" id="textarea" class="expand"></textarea>
 	<div class="categories">
 	<label>Category:</label><input type="text" placeholder="(optional)" name="category">
+	<?php echo get_category_dropdown(); ?>
 	</div>
 	<div class="word_count">Word Count: <span id="word_count">0</span></div>
 

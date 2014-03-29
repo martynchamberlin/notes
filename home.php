@@ -2,7 +2,7 @@
 
 // This query is strictly for paginating purposes.
 $args = array(
-	'columns' => 'count(id)',
+	'columns' => 'count(notes.id)',
 );
 
 $result = new Query( $args );

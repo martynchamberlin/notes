@@ -1,34 +1,86 @@
 $(document).ready(function() {
 
+	if ( $('body').is('.edit') || $('body').is('.add') )
+	{
+		// If they paste from an external source, fix that immediately
+		// so the formatting is consistent with the rest of the site
+		$('.input_title').keyup(function()
+		{
+			$('div.input_title').html( strip( $('div.input_title').html() ) );
+		});
+
+		// by default, it's okay to leave the commpose window, because
+		// you haven't updated anything yet when the page initially loads
+		var okay_to_leave = true;
+		$('input, textarea, .input_title').keyup(function()
+		{
+			okay_to_leave = false;
+		});
+
+		$('form').submit(function()
+		{
+			okay_to_leave = true;
+		});
+
+		$('.buttons .delete').click(function()
+		{
+			okay_to_leave = true;
+		});
+
+		// If they have edited anything, warn them about it
+		window.onbeforeunload = function() 
+		{
+			if ( ! okay_to_leave )
+			{
+				var yes = window.confirm("Lose your unsaved work?!");
+				if (! yes) {			
+					return false;
+				}
+			}
+		}
+	}
+	// customize default select dropdowns
+	$('select').select2();
+
+	// populate the actual input with whatever is in the dropdown value
+	$('select[name="select-category"]').change(function()
+	{
+		if ( $(this).val() !== "" )
+		{
+			$('input[name="category"]').val( $(this).val() );
+		}
+	});
+
 	// Focus on title when you're on a new deal
 	$('.add .input_title, .edit textarea').focus();
 
-
+	// nice function that removes all inline HTML formatting
 	function strip(html)
 	{
 	   var tmp = document.createElement("DIV");
 	   tmp.innerHTML = html;
 	   return tmp.textContent||tmp.innerText;
 	}
-
+	
+	// fade in the primary page view whenever the page loads
 	$('#content > *').hide().fadeIn(200);
 
-	$('form').submit(function()
-	{
-		$('.home > div + div').fadeOut(400);
-		$('input.input_title').val( strip( $('div.input_title').html() ) );
-	});
+	// more fade effects
 	$('a.click').click(function()
 	{
 		$('.home > div + div').fadeOut(400);
 	});
 
-	document.title = $('h1').html();
-
-	if ( $('.post').length > 0 )
+	// when they submit a form, fade out the page.
+	// also make sure that our .input_title has a proper value
+	$('form').submit(function()
 	{
-		$('.post').first().addClass('active');
-	}
+		$('.home > div + div').fadeOut(400);
+		$('input.input_title').val( strip( $('div.input_title').html() ) );
+	});
+
+	// Our DOM doesn't yet supply a valid title, so here's a cheap fix
+	document.title = $('h1').html();
 
 	key.filter = function(event)
 	{
@@ -36,7 +88,6 @@ $(document).ready(function() {
 		//return jQuery('textarea').is(':focus');
 		return true;
 	}
-
 
 	// Let us tab in a textarea
 	$("textarea").tabby();
@@ -47,7 +98,7 @@ $(document).ready(function() {
 	// No margin-bottom for the last <p> tag on the single.php content
 	$(".single p").last().addClass('last');
 
-	// Make sure you really want to delete that
+	// Make sure you really want to delete that note
 	$(".delete").click(function() {
 		var yes = window.confirm("Seriously?");
 		if (! yes) {			
@@ -79,13 +130,22 @@ $(document).ready(function() {
 						{
 							$('.post').first().addClass('active');
 						}
-					}, 510 );
+					}, 510 ); // slighly longer than timeout
 				}
 			});
 			return false;
 		}
 	});
 
+	// by default, the first post is highlighted. this sets the stage
+	// for the hot key implementations
+	if ( $('.post').length > 0 )
+	{
+		$('.post').first().addClass('active');
+	}
+
+
+	// handles all of the hot keys
 
 	if ( $('#form').length == 1 )
 	{
@@ -133,7 +193,7 @@ $(document).ready(function() {
 	{
 		if ( $('.active a').length > 0 && ! $('input').is(':focus') )
 		{
-			window.location = $('.active a.title').attr('href');
+			window.location = $('.active .title a').attr('href');
 		}
 	});
 
@@ -172,10 +232,9 @@ $(document).ready(function() {
 		}
 	});
 
-});
 
-$(document).ready(function() {
-
+	// handles the wordcount. This is probably a lot more tedious
+	// than it ought to be. 
 	var wordCount = function()
 	{
 	
@@ -221,4 +280,5 @@ $(document).ready(function() {
 	$('textarea').autosize(); 
 	var h = $('#wrap').outerHeight();
 });
+
 

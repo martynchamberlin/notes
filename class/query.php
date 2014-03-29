@@ -19,7 +19,14 @@ class Query
 	{
 		$sql = 'SELECT ';
 		$sql .= isset($args['columns']) ? $args['columns'] : '*';
-		$sql .= ' FROM notes';
+		$sql .= ', notes.id as nid FROM notes';
+
+		if ( true )
+		{
+			$sql .= ' LEFT JOIN categories_lookup CL ON notes.id = CL.nid 
+				LEFT JOIN categories C on CL.cid = C.id ';
+		}
+
 		$sql .= isset($args['where']) ? ' ' . $args['where'] : '';
 		$sql .= isset($args['orderby']) ? ' ORDER BY ' . $args['orderby'] : '';
 		$sql .= isset($args['order']) ? ' ' . $args['order'] : '';

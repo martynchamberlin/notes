@@ -134,14 +134,44 @@ else if (isset($_POST['save'])) {
 // Process the DELETE A notes form
 else if (isset($_GET['delete'])) {
 	$db = Core::getInstance();
-	$db = $db->pdo;
+	$pdo = $db->pdo;
 
 	$id = $_GET['delete'];
-	$sql = "DELETE FROM notes WHERE id='$id'";
+	$sql = "DELETE FROM notes WHERE id=:nid";
+	$s = $pdo->prepare($sql);
+	$s->bindValue('nid', $id);
+	$s->execute();
 
-	$db->exec($sql);
+	$sql = 'DELETE FROM categories_lookup WHERE nid = :nid';
+	$s = $pdo->prepare($sql);
+	$s->bindValue('nid', $id);
+	$s->execute();
 
 	header('Location: /');
 	exit();
+}
+
+function get_category_dropdown()
+{
+
+	$db = Core::getInstance();
+	$db = $db->pdo;
+	$sql = 'SELECT DISTINCT C.name FROM `categories` C INNER JOIN categories_lookup CID ON C.id = CID.cid
+ORDER BY C.name';
+	$s = $db->query($sql);
+	$rows = $s->fetchAll();
+
+	$output = "";
+
+	if ( ! empty( $rows ) )
+	{
+		$output = '<div class="select-category-wrap"><select name="select-category" style="width: 200px"><option value="">-- select --</option>';
+		foreach ( $rows as $row )
+		{
+			$output .= '<option value="' . $row['name'] . '">' . $row['name'] . '</option>';
+		}
+		$output .= '</select></div>';
+	}
+	return $output;
 }
 
