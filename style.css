@@ -54,9 +54,6 @@ code, pre {
 }
 
 pre {
-
-font-size: 13px;
-line-height: 19px;
 overflow: auto;
 padding: 10px;
 margin: 0 0 25px 0;
@@ -306,7 +303,7 @@ a small {
 }
 
 .no_category .title {
-padding: 29px 15px 29px;
+padding: 29px 0 20px 15px;
 }
 
 .has_archive.title {
