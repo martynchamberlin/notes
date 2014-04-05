@@ -93,6 +93,7 @@ body .input_title {
 h2 {
 	font-size: 27px;
 	padding: 0 0 7px;
+	line-height: 29px;
 }
 
 h3 {
@@ -299,7 +300,7 @@ a small {
 .title {
 	padding: 21px 15px;
 	display: inline-block;
-	width: 555px;
+	width: 550px;
 }
 
 .no_category .title {

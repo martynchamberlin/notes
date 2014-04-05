@@ -158,7 +158,8 @@ $(document).ready(function() {
 		});
 	}
 	
-	if ( $('.search_form input').length == 1 )
+	if ( $('.search_form input').length == 1 
+		&& $('.single').length == 0 && ! $('body').is('.edit') )
 	{
 		key('⌘+f, ctrl+f', function()
 		{
