@@ -1,0 +1,6 @@
+.DS_Store
+*.*.swp
+uploads
+offline
+images
+class/config.php
