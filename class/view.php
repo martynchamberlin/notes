@@ -54,13 +54,13 @@ class View
 			$output .= '<a class="edit" href="/edit?id=' . $post['nid'] . '" method="post">&#9998;</a>';
 			$output .= ' <a class="delete trash-can" href="?delete=' . $post['nid'] . '"/>&#59177;</a>';
 			$output .= '</div>';
-			$output .= '<span class="title"><a href="' . View::url( $post['nid'], $post['title'] ) . '">' . $post['title'] . '</a>';
+			$output .= '<span class="title"><a href="' . View::url( $post['nid'], $post['title'] ) . '">' . $post['title'] . '</a><br/>';
 			if ( $post['name'] != "" )
 			{
-				$output .= '<br/><a href="/search/?q=in:' . $post['name'] . '"><small>' . $post['name'] . '</small></a>';
+				$output .= '<a href="/search/?q=in:' . $post['name'] . '"><small>' . $post['name'] . '</small></a> <span class="bull">&bull;</span> ';
 			}
-			$output .= '</span></div><!-- end .left -->';
-			$output .= '<div class="date">' . date('F j, Y\<\b\r\/\>g:i A', $post['updatedate']);
+			$output .= '<span class="word-count">' . number_format( $post['word_count'] ) . ' words</span></span></div><!-- end .left -->';
+			$output .= '<div class="date">' . date('F j, Y\<\b\r\/\>g:i A', $post['publishdate']);
 			$output .= '</div><div class="clear"></div></div>';
 
 		}

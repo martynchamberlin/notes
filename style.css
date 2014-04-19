@@ -202,9 +202,14 @@ margin: 0 10px 0 0;}
 
 /* Active archive --------------------------------------- */
 
-.active .actions a, .post .actions a:hover, .post.active .date, .active a small  {
+.active .actions a, .post .actions a:hover, .post.active .date, .active a small, .active .bull, .active .word-count  {
 	border-color: #CBE1F8;
 	color: #A0CAF5;
+}
+
+.bull, .word-count {
+	font-size: 14px;
+	color: #ddd;
 }
 
 .post.active, .post.previous  {
@@ -280,7 +285,7 @@ text-align: right
 
 a small {
 	display: inline-block;
-	color: #ACCBEC;
+	color: #ddd;
 }
 
 .dates {
@@ -298,13 +303,13 @@ a small {
 }
 
 .title {
-	padding: 21px 15px;
+	padding: 21px 0 21px 15px;
 	display: inline-block;
 	width: 550px;
 }
 
 .no_category .title {
-padding: 29px 0 20px 15px;
+/*padding: 29px 0 20px 15px;*/
 }
 
 .has_archive.title {
