@@ -68,11 +68,6 @@ body {
 	font: 300 17px/22px 'museo-slab', 'proxima-nova', Helvetica, Arial;
 }
 
-.paginate {
-	margin: 20px 0 0;
-	overflow: hidden;
-}
-
 p {
 	margin-bottom: 25px;
 }
@@ -202,12 +197,20 @@ margin: 0 10px 0 0;}
 
 /* Active archive --------------------------------------- */
 
-.active .actions a, .post .actions a:hover, .post.active .date, .active a small, .active .bull, .active .word-count  {
+.actions a:hover {
+	transition: .3s;
+}
+
+.active .light-stuff a, .active .date, .active .light-stuff, .active.post .date, .active .actions a, .actions a:hover  {
 	border-color: #CBE1F8;
 	color: #A0CAF5;
 }
 
-.bull, .word-count {
+.light-stuff a {
+	text-decoration: underline;
+}
+
+.light-stuff, .light-stuff a {
 	font-size: 14px;
 	color: #ddd;
 }
@@ -228,9 +231,31 @@ margin: 0 10px 0 0;}
 	height: 100%;
 }
 
+.paginate {
+	text-align: center;
+	margin: 30px 0;
+}
+
 .paginate .item {
-	padding: 0 10px 0;
-	float: left;
+	display: inline-block;
+}
+
+.paginate a, .paginate .no-link {
+	border: 1px solid #CBE6FF;
+	border-radius: 5px;
+	margin: 0 10px 0 0;
+	display: inline-block;
+	padding: 5px 13px;
+	transition: .3s;
+}
+
+.paginate .no-link {
+	border-color: #eee;
+	color: #aaa;
+}
+
+.paginate a:hover {
+	border: 1px solid #7AB0F1;
 }
 
 body.search #content, body.home #content {

@@ -47,19 +47,57 @@ class View
 			{	
 				$class .= ' no_category';
 			}
+			
+			$delta = "";
+			if ( $post['updatedate'] > $post['publishdate'] )
+			{
+				$second = 1;
+				$minute = $second * 60;
+				$hour = $minute * 60;
+				$day = $hour * 24;
+				$week = $day * 7;
+				$month = $day * 30;
+				$year = $month * 12;
 
+				$d_seconds = time() - $post['updatedate'];
+				if ( $d_seconds > $year )
+					$delta = floor( $d_seconds / $year ) . " year";
+
+				else if ( $d_seconds > $month )
+					$delta = floor( $d_seconds / $month ) . " month";
+
+				else if ( $d_seconds > $week )
+					$delta = floor( $d_seconds / $week ) . " week";
+
+				else if ( $d_seconds > $day )
+					$delta = floor( $d_seconds / $day ) . " day";
+
+				else if ( $d_seconds > $hour )
+					$delta = floor( $d_seconds / $hour ) . " hour";
+
+				else if ( $d_seconds > $minute )
+					$delta = floor( $d_seconds / $minute ) . " minute";
+
+				else // if ( $d_seconds > $second )
+					$delta = floor( $d_seconds / $second ) . " second";
+	
+				if ( substr( $delta, 0, 1 ) != '1' || substr( $delta, 1, 1 ) != ' ')
+					$delta .= 's';
+				$delta = ' &bull; Updated ' . $delta . ' ago.';
+			}
+			
 			$output .= '<div class="post archive ' . $class . '">';
 			$output .= '<div class="left-column">';
 			$output .= '<div class="actions">';
 			$output .= '<a class="edit" href="/edit?id=' . $post['nid'] . '" method="post">&#9998;</a>';
 			$output .= ' <a class="delete trash-can" href="?delete=' . $post['nid'] . '"/>&#59177;</a>';
 			$output .= '</div>';
-			$output .= '<span class="title"><a href="' . View::url( $post['nid'], $post['title'] ) . '">' . $post['title'] . '</a><br/>';
+			$output .= '<span class="title"><a href="' . View::url( $post['nid'], $post['title'] ) . '">' . $post['title'] . '</a><br/><span class="light-stuff">';
 			if ( $post['name'] != "" )
 			{
-				$output .= '<a href="/search/?q=in:' . $post['name'] . '"><small>' . $post['name'] . '</small></a> <span class="bull">&bull;</span> ';
+				$output .= 'Filed under <a href="/search/?q=in:' . $post['name'] . '">' . $post['name'] . '</a> <span class="bull">&bull;</span> ';
 			}
-			$output .= '<span class="word-count">' . number_format( $post['word_count'] ) . ' words</span></span></div><!-- end .left -->';
+			$output .= '<span class="word-count">' . number_format( $post['word_count'] ) . ' words</span><span class="update-date">' . $delta . '</span></span></span></div><!-- end .left -->';
 			$output .= '<div class="date">' . date('F j, Y\<\b\r\/\>g:i A', $post['publishdate']);
 			$output .= '</div><div class="clear"></div></div>';
 
@@ -213,7 +251,7 @@ class View
 
 				else 
 				{
-					$output .= $i;
+					$output .= '<span class="no-link">' . $i . '</span>';
 				}
 				$output .= '</div>';
 			}
