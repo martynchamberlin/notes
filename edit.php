@@ -35,7 +35,7 @@ require 'top-main.php';
 		</form>
 		
 <a href="/<?=$notes['nid'] ?>" class="grey cancel">Cancel</a>
-		<a class="delete delete-btn" href="?delete=<?php echo $notes['nid'];?>">Delete</a>
+		<a class="delete delete-btn last" href="?delete=<?php echo $notes['nid'];?>">Delete</a>
 		</div>
 	<?php endforeach; ?>
 </div></div></div>

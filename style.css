@@ -65,8 +65,22 @@ input[type="submit"], textarea, input[type="text"] {
 }
 
 body {
-	font: 300 17px/22px 'museo-slab', 'proxima-nova', Helvetica, Arial;
+	font: 500 17px/22px 'museo-slab', 'proxima-nova', Helvetica, Arial;
 }
+
+/*
+body {
+	font: 500 17px/22px 'Oxygen', 'proxima-nova', Helvetica, Arial;
+}
+
+.content .wrap {
+	font: 300 19px/25px 'Crimson Text';
+}
+
+.content h1, .content h2, .content h3 {
+	font-family: 'Oxygen';
+}
+*/
 
 p {
 	margin-bottom: 25px;
@@ -141,16 +155,27 @@ ul em, ol em {
 	margin: 0 auto;
 }
 
+.top:hover a {
+	color: #7AB0F1;
+}
+
 .top a {
 	float: left;
 	font-size: 20px;
 	display: block;
 	margin: 0 30px 0 0;
+	color: #dbdbdb;
+	transition: .3s;
+}
+
+.top a:hover {
+	color: #2985F2;
 }
 
 .entypo {
 	font-family: 'entypo';
 	font-size: 30px;
+	padding: 0 4px 0 0;
 }
 
 .search_form {
@@ -197,13 +222,14 @@ margin: 0 10px 0 0;}
 
 /* Active archive --------------------------------------- */
 
-.actions a:hover {
-	transition: .3s;
-}
-
 .active .light-stuff a, .active .date, .active .light-stuff, .active.post .date, .active .actions a, .actions a:hover  {
 	border-color: #CBE1F8;
 	color: #A0CAF5;
+}
+
+.actions a:hover, .light-stuff a:hover {
+	transition: .3s;
+	color: #2985F2;
 }
 
 .light-stuff a {
@@ -432,6 +458,10 @@ font-family: inherit;
 text-align: center;
 transition: .3s;
 font-size: 15px;
+}
+
+.buttons .last {
+	margin-right: 0;
 }
 
 input[type="submit"]:hover, .cancel:hover, .delete-btn:hover, .blue:hover, .grey:hover {

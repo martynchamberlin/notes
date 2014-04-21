@@ -25,7 +25,7 @@ require 'top-main.php';
 		<input type="hidden" name="word_count" id="word_count_input" value="">
 		<input type="hidden" value="Add" class="add-submit"/>	
 	<input type="submit" value="Save" class="blue add-submit"/>
-<a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="cancel">Cancel</a>
+<a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="cancel last">Cancel</a>
 </div>
 	</form>
 
