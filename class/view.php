@@ -127,6 +127,7 @@ class View
 
 	static function formatSingle( $post )
 	{	
+		//$post['text'] = preg_replace('@(\s|^)(https?://([-\w\.]+[-\w])+(:\d+)?(/([\w/_\.#-1234567890=]*(\?\S+)?[^\.\s])?)?)@', '$1<notextile><a href="$2" target="_blank">$2</a></notextile>', $post['text']);
 		$output = "";
 		$output .= '<div class="content">';
 		$output .= '<h1>' . $post['title'] . '</h1>';
