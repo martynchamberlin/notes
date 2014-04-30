@@ -34,7 +34,7 @@ if ( strpos( $q, 'in:' ) === 0 )
 else
 {
 $args = array(
-	'columns' => 'count(Notes.id)',
+	'columns' => 'count(notes.id)',
 	'where' => 'WHERE text LIKE "%'. stripslashes(urldecode($q)) . '%" || title LIKE "%' . stripslashes(urldecode($q)) . '%"',
 );
 	if ( ! $all ) 
