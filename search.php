@@ -57,7 +57,7 @@ if ( strpos( $q, 'in:' ) === 0 )
 	{
 		$sql .= ' AND archived=0';
 	}
-	$sql .= 'ORDER BY updatedate DESC LIMIT ' . View::$startAt . ', ' . View::$perPage;
+	$sql .= ' ORDER BY updatedate DESC LIMIT ' . View::$startAt . ', ' . View::$perPage;
 	$s = $pdo->prepare($sql);
 	$s->bindValue('name',stripslashes(urldecode( substr( $q, 3) ) ) );
 	$s->execute();
