@@ -135,7 +135,17 @@ class View
 		$output .= '<div class="categories">
 	<label>Category:</label><input type="text" disabled value="' .  $post['cat_name'] . '" placeholder="(not specified)" name="category">
 	</div><div class="word_count">Word Count: ' . $post['word_count'] . '</div>';
-		$output .= '<div class="clear"></div><div class="buttons"><a href="/edit/?id=' . $post['nid'] . '" class="blue edit">Edit</a>';
+		$output .= '<div class="clear"></div><div class="buttons">
+		<a href="/edit/?id=' . $post['nid'] . '" class="blue edit">Edit</a>';
+		if ( $post['archived'] == "0" )
+		{
+			$output .= '<a href="/archive/?aid=' . $post['nid'] . '" class="blue archive">Archive</a>';
+		}
+		else
+		{
+			$output .= '<a href="/archive/?naid=' . $post['nid'] . '" class="blue archive">Restore</a>';
+		}
+
 		$output .= '<a href="/" class="grey">Cancel</a>';
 		$output .= '<a href="/?delete=' . $post['nid'] .'" class="grey delete">Delete</a>';
 		$output .= '<input type="hidden" id="noteID" value="' . $post['nid'] . '"/></div></div>';

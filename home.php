@@ -3,6 +3,7 @@
 // This query is strictly for paginating purposes.
 $args = array(
 	'columns' => 'count(notes.id)',
+	'where' => 'where archived=0'
 );
 
 $result = new Query( $args );
@@ -15,7 +16,8 @@ $args = array(
 	'orderby' => 'updatedate',
 	'order' => 'desc',
 	'offset' => View::$startAt,
-	'posts_per_page' => View::$perPage
+	'posts_per_page' => View::$perPage,
+	'where' => 'where archived=0'
 );
 
 $posts = new Query( $args );
