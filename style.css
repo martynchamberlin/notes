@@ -51,13 +51,15 @@ overflow: hidden;
 
 code, pre {
 	overflow-y: scroll;
+	font-family: 'inconsolata';
+	color: #407958;
+	background: #1A1A1A;
 }
 
 pre {
 overflow: auto;
 padding: 10px;
 margin: 0 0 25px 0;
-background: #FFFAE0;
 }
 
 input[type="submit"], textarea, input[type="text"] {
@@ -65,7 +67,7 @@ input[type="submit"], textarea, input[type="text"] {
 }
 
 body {
-	font: 500 17px/22px 'museo-slab', 'proxima-nova', Helvetica, Arial;
+	font: 500 17px/22px /*'inconsolata',*/ 'museo-slab', 'proxima-nova', Helvetica, Arial;
 }
 
 /*
