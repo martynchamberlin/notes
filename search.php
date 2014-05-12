@@ -11,7 +11,6 @@ if ( substr(  $q , strlen( $q ) - 3 ) == ' -a' )
 	$all = true;
 }
 
-
 // This query is strictly for paginating purposes.
 
 // are they searching a specific category?
@@ -35,7 +34,7 @@ else
 {
 $args = array(
 	'columns' => 'count(notes.id)',
-	'where' => 'WHERE text LIKE "%'. stripslashes(urldecode($q)) . '%" || title LIKE "%' . stripslashes(urldecode($q)) . '%"',
+	'where' => 'WHERE (text LIKE "%'. stripslashes(urldecode($q)) . '%" OR title LIKE "%' . stripslashes(urldecode($q)) . '%")',
 );
 	if ( ! $all ) 
 	{
@@ -67,7 +66,7 @@ if ( strpos( $q, 'in:' ) === 0 )
 else
 {
 $args = array(
-	'where' => 'WHERE text LIKE "%'. stripslashes(urldecode($q)) . '%" || title LIKE "%' . stripslashes(urldecode($q)) . '%"',
+	'where' => 'WHERE (text LIKE "%'. stripslashes(urldecode($q)) . '%" || title LIKE "%' . stripslashes(urldecode($q)) . '%")',
 	'orderby' => 'updatedate',
 	'order' => 'DESC',
 	'offset' => View::$startAt,
