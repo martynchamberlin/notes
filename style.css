@@ -8,6 +8,17 @@
              url('fonts/entypo.svg') format('svg');
 }
 
+blockquote {
+background: #EFF4FA;
+padding: 20px;
+border-left: 5px solid #7AB0F1;
+margin: 0 0 25px;
+}
+
+blockquote > *:last-child {
+	margin-bottom: 0;
+}
+
 .single .content .wrap > *:last-child {
 	margin-bottom: 0;
 }
