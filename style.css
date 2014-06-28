@@ -62,15 +62,20 @@ overflow: hidden;
 
 code, pre {
 	overflow-y: scroll;
-	font-family: 'inconsolata';
-	color: #407958;
 	background: #1A1A1A;
+	background: #F8F8F8;
+	border: 1px solid #DDD;
+	border-radius: 5px;
 }
 
 pre {
 overflow: auto;
-padding: 10px;
+padding: 10px 20px;
 margin: 0 0 25px 0;
+}
+
+pre code {
+	border: none;
 }
 
 input[type="submit"], textarea, input[type="text"] {
@@ -110,7 +115,7 @@ body .input_title {
 	font-weight: bold;
 	border: none;
 	padding: 0;
-
+	line-height: 2.8rem;
 }
 
 h2 {
@@ -514,7 +519,7 @@ float: left;
 
 .categories label {
 	float: left;
-	padding: 8px 7px 0 0;
+	padding: 4px 7px 0 0;
 }
 
 .categories input[type="text"] {
