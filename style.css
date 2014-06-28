@@ -78,7 +78,9 @@ input[type="submit"], textarea, input[type="text"] {
 }
 
 body {
-	font: 500 17px/22px /*'inconsolata',*/ 'museo-slab', 'proxima-nova', Helvetica, Arial;
+	/*font: 500 17px/22px 'museo-slab', 'proxima-nova', Helvetica, Arial;*/
+	font: 400 17px/2rem "Avenir Next";
+	/*background: #F7F7FA;*/
 }
 
 /*
@@ -103,7 +105,6 @@ h1,
 body .input_title {
 	font-size: 35px;
 	margin: 0 -100px 29px;
-	line-height: 39px;
 	font-weight: 300;
 	text-align: center;
 	font-weight: bold;
@@ -115,7 +116,6 @@ body .input_title {
 h2 {
 	font-size: 27px;
 	padding: 0 0 7px;
-	line-height: 29px;
 }
 
 h3 {
@@ -203,6 +203,7 @@ font-size: inherit;
 font-family: inherit;
 width: 220px;
 border-radius: 15px;
+	background: none;
 }
 
 .search_form input[type="search"]:focus {
@@ -299,6 +300,7 @@ margin: 0 10px 0 0;}
 
 body.search #content, body.home #content, body.archive #content {
 	width: 840px;
+	line-height: 22px;
 }
 
 #content {
@@ -337,9 +339,8 @@ body .post.not_first {
 .post .date {
 color: #ddd;
 font-size: 12px;
-line-height: 16px;
 width: auto;
-padding: 25px;
+padding: 29px;
 }
 
 .post .date {
@@ -435,20 +436,20 @@ input.edit {
 
 
 textarea {
-	background: #fff;
+	background: none;
 	width: 100%;
 	margin: 0 -20px;
 	overflow: auto;
 	font-family: inherit;
 	font-size: inherit;
 	line-height: inherit;
-	border: 1px solid #DDD;
-	padding: 20px;
+	/*border: 1px solid #DDD;*/
+	padding: 0 20px 20px;
 	border-radius: 5px;
 }
 
 input[type="text"] {
-	background: #fff;
+	background: none;
 	float: left;
 	margin: 0 20px 20px 0;
 	width: 250px;
