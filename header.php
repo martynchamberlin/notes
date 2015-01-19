@@ -2,7 +2,7 @@
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
 <head>
-<title>Title of the Document</title>
+<title>Home – Notes</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php /* <script type="text/javascript" src="//use.typekit.net/wfh3utg.js"></script>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script> */ ?>
@@ -17,6 +17,9 @@
 <script src="/js/site.js"></script>
 <script src="/js/keymaster.js"></script>
 <script src="/lib/select2-3.4.6/select2.js"></script>
+
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
 </head>
 <body class="<?php echo ( trim( View::showPage(), "/" ) == "") ? "home" : trim( View::showPage(), "/" ); ?>">
 <div class="root"><div id="wrap">

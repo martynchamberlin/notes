@@ -80,8 +80,10 @@ $(document).ready(function() {
 	});
 
 	// Our DOM doesn't yet supply a valid title, so here's a cheap fix
-	document.title = $('h1').html();
-
+	if ( $('h1').length > 0 ) {
+		document.title = $('h1').html();
+	}
+	
 	key.filter = function(event)
 	{
 		var tagName = (event.target || event.srcElement).tagName;
