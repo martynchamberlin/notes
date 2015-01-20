@@ -89,8 +89,8 @@ class View
 			$output .= '<div class="post archive ' . $class . '">';
 			$output .= '<div class="left-column">';
 			$output .= '<div class="actions">';
-			$output .= '<a class="edit" href="/edit?id=' . $post['nid'] . '" method="post">&#9998;</a>';
-			$output .= ' <a class="delete trash-can" href="?delete=' . $post['nid'] . '"/>&#59177;</a>';
+			$output .= '<a class="edit" href="' . Config::$home . '/edit?id=' . $post['nid'] . '" method="post">&#9998;</a>';
+			$output .= ' <a class="delete trash-can" href="' . Config::$home . '/?delete=' . $post['nid'] . '"/>&#59177;</a>';
 			$output .= '</div>';
 			$output .= '<span class="title"><a href="' . View::url( $post['nid'], $post['title'] ) . '">' . $post['title'] . '</a><br/><span class="light-stuff">';
 			if ( $post['name'] != "" )
@@ -147,7 +147,7 @@ class View
 		}
 
 		$output .= '<a href="/" class="grey">Cancel</a>';
-		$output .= '<a href="/?delete=' . $post['nid'] .'" class="grey delete">Delete</a>';
+		$output .= '<a href="' . Config::$home . '?delete=' . $post['nid'] .'" class="grey delete">Delete</a>';
 		$output .= '<input type="hidden" id="noteID" value="' . $post['nid'] . '"/></div></div>';
 		return $output;
 

@@ -185,6 +185,7 @@ $(document).ready(function() {
 		if ( $('.active .actions a').length > 0 )
 		{
 			window.location = $('.active .actions a').first().attr('href');
+
 		}
 		else if ( $('a.edit').length > 0 )
 		{
