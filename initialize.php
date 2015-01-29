@@ -2,11 +2,11 @@
 
 function __autoload($className)
 {
-	require 'class/' . strtolower($className) . '.php';
+	require_once 'class/' . strtolower($className) . '.php';
 }
 
-require'functions.php';
-require'header.php';
+require_once 'functions.php';
+require_once 'header.php';
 
 
 

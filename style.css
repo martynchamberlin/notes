@@ -83,24 +83,8 @@ input[type="submit"], textarea, input[type="text"] {
 }
 
 body {
-	/*font: 500 17px/22px 'museo-slab', 'proxima-nova', Helvetica, Arial;*/
-	font: 400 17px/2rem "Avenir Next";
-	/*background: #F7F7FA;*/
+	font: 400 17px/2rem "Avenir Next", 'Helvetica';
 }
-
-/*
-body {
-	font: 500 17px/22px 'Oxygen', 'proxima-nova', Helvetica, Arial;
-}
-
-.content .wrap {
-	font: 300 19px/25px 'Crimson Text';
-}
-
-.content h1, .content h2, .content h3 {
-	font-family: 'Oxygen';
-}
-*/
 
 p {
 	margin-bottom: 25px;
