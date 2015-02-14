@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="/style.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="/lib/select2-3.4.6/select2.css" type="text/css" media="screen" />
 
+<script src="//use.typekit.net/phe8yaq.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+
 <script src="/js/jquery.min.js"></script>
 <script src="/js/jquery.text-expander.js"></script>
 <script src="/js/textarea.js"></script>

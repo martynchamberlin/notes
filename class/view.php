@@ -219,7 +219,10 @@ class View
 		{
 			for ($i = $start; $i <= $finish; $i++)
 			{ 
-		 		$output .= '<div class="item">';
+		 		$output .= '<div class="item';
+		 		$output .= ($i == $current_page ) ? ' no-link-wrap' : '';
+
+		 		$output .= '">';
 				$string = "";
 				$count = 0;
 
